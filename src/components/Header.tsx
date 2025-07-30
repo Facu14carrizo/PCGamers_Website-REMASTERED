@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white shadow-lg sticky top-0 z-50">
+      <header className="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
       {/* Top Bar */}
       <div className="bg-gradient-to-r from-orange-600 to-orange-500 text-white py-2">
         <div className="container mx-auto px-4 text-center text-sm">
@@ -60,8 +60,8 @@ const Header = () => {
               <GamepadIcon className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">GamerTech</h1>
-              <p className="text-xs text-gray-500">Pro Gaming Store</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">GamerTech</h1>
+              <p className="text-xs text-gray-500 dark:text-gray-300">Pro Gaming Store</p>
             </div>
           </div>
 
@@ -74,7 +74,7 @@ const Header = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Buscar productos gaming, RTX 4090, periféricos..."
-                  className="w-full py-3 px-4 pr-12 border-2 border-gray-200 rounded-full focus:border-orange-500 focus:outline-none transition-colors"
+                  className="w-full py-3 px-4 pr-12 border-2 border-gray-200 dark:border-gray-700 rounded-full focus:border-orange-500 focus:outline-none transition-colors bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-400"
                 />
                 <button 
                   type="submit"
@@ -177,40 +177,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="bg-gray-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="hidden md:flex space-x-8 py-3">
-            {['Placas de Video', 'Procesadores', 'Motherboards', 'Memorias RAM', 'Periféricos', 'Monitores', 'Ofertas'].map((item) => (
-              <button 
-                key={item}
-                onClick={() => alert(`Navegando a: ${item}`)}
-                className="hover:text-orange-500 transition-colors py-2 border-b-2 border-transparent hover:border-orange-500"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="md:hidden py-4 space-y-2">
-              {['Placas de Video', 'Procesadores', 'Motherboards', 'Memorias RAM', 'Periféricos', 'Monitores', 'Ofertas'].map((item) => (
-                <button 
-                  key={item} 
-                  onClick={() => {
-                    alert(`Navegando a: ${item}`);
-                    setIsMenuOpen(false);
-                  }}
-                  className="block w-full text-left py-2 hover:text-orange-500 transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </nav>
+
       </header>
 
       {/* Cart Modal */}

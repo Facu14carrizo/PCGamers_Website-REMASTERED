@@ -316,8 +316,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, onFilterChange }) =>
 
         {/* Actions */}
         <div className="p-4 border-t bg-gray-50 space-y-2">
-          <button className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-lg font-bold transition-colors">
+          <button 
             onClick={applyFilters}
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-lg font-bold transition-colors"
+          >
             Aplicar Filtros
           </button>
           <button 
