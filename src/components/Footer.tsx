@@ -5,26 +5,37 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       {/* Newsletter Section */}
-      <div className="bg-gradient-to-r from-orange-600 to-orange-500 py-12">
+      <div className="bg-gradient-to-r from-orange-600 to-orange-500 py-8 sm:py-12">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">¡Mantente actualizado con las mejores ofertas!</h2>
-          <p className="text-lg mb-6 opacity-90">Suscríbete y recibe descuentos exclusivos directamente en tu email</p>
-          <div className="flex flex-col md:flex-row max-w-md mx-auto gap-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">¡Mantente actualizado con las mejores ofertas!</h2>
+          <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 opacity-90">Suscríbete y recibe descuentos exclusivos directamente en tu email</p>
+          <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-3 sm:gap-4">
             <input
               type="email"
               placeholder="Tu email aquí..."
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
+              className="flex-1 px-4 py-2.5 sm:py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base"
             />
-            <button className="bg-white text-orange-600 px-8 py-3 rounded-lg font-bold hover:bg-orange-50 transition-colors">
-              Suscribirse
-            </button>
+          <button 
+            onClick={() => {
+              const email = (document.querySelector('input[type="email"]') as HTMLInputElement)?.value;
+              if (email) {
+                alert(`¡Gracias por suscribirte!\n\nEmail: ${email}\n\nRecibirás nuestras mejores ofertas y novedades gaming.`);
+                (document.querySelector('input[type="email"]') as HTMLInputElement).value = '';
+              } else {
+                alert('Por favor ingresa tu email para suscribirte.');
+              }
+            }}
+            className="bg-white text-orange-600 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-bold hover:bg-orange-50 transition-colors text-sm sm:text-base"
+          >
+            Suscribirse
+          </button>
           </div>
         </div>
       </div>
 
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
@@ -39,18 +50,18 @@ const Footer = () => {
             <p className="text-gray-400 mb-4">
               Tu tienda de gaming y tecnología de confianza. Los mejores productos, precios increíbles y el servicio que te mereces.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4">
               <a href="#" className="bg-orange-600 hover:bg-orange-700 p-2 rounded-lg transition-colors">
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="bg-orange-600 hover:bg-orange-700 p-2 rounded-lg transition-colors">
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="bg-orange-600 hover:bg-orange-700 p-2 rounded-lg transition-colors">
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
               <a href="#" className="bg-orange-600 hover:bg-orange-700 p-2 rounded-lg transition-colors">
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
           </div>
@@ -143,20 +154,20 @@ const Footer = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-800 py-6">
+      <div className="border-t border-gray-800 py-4 sm:py-6">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
+            <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
               © 2024 GamerTech. Todos los derechos reservados.
             </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-orange-500 text-sm transition-colors">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-center sm:text-left">
+              <a href="#" className="text-gray-400 hover:text-orange-500 text-xs sm:text-sm transition-colors">
                 Política de Privacidad
               </a>
-              <a href="#" className="text-gray-400 hover:text-orange-500 text-sm transition-colors">
+              <a href="#" className="text-gray-400 hover:text-orange-500 text-xs sm:text-sm transition-colors">
                 Términos de Uso
               </a>
-              <a href="#" className="text-gray-400 hover:text-orange-500 text-sm transition-colors">
+              <a href="#" className="text-gray-400 hover:text-orange-500 text-xs sm:text-sm transition-colors">
                 Cookies
               </a>
             </div>

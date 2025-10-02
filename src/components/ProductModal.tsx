@@ -43,45 +43,52 @@ const ProductModal: React.FC<ProductModalProps> = ({
     for (let i = 0; i < quantity; i++) {
       onAddToCart(product);
     }
-    alert(`¡${product.name} agregado al carrito! (${quantity} unidades)`);
+    // Cerrar el modal después de agregar al carrito
+    onClose();
   };
 
   const handleBuyNow = () => {
     handleAddToCart();
-    alert('¡Redirigiendo al checkout para compra inmediata!');
+    
+    // Mostrar mensaje de confirmación
+    alert(`¡Producto agregado al carrito!\n\n${product.name}\nCantidad: ${quantity}\nTotal: $${(product.price * quantity).toLocaleString()}\n\n¿Deseas proceder al checkout?`);
+    
+    // Aquí se podría redirigir al checkout real
+    // Por ahora solo cerramos el modal
+    onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[98vh] sm:max-h-[90vh] overflow-hidden shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-2xl font-bold text-gray-900">Detalles del Producto</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b">
+          <h2 className="text-lg sm:text-2xl font-bold text-gray-900">Detalles del Producto</h2>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <X className="h-6 w-6" />
+            <X className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="grid md:grid-cols-2 gap-8 p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 p-4 sm:p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
           {/* Images */}
           <div>
-            <div className="mb-4">
+            <div className="mb-3 sm:mb-4">
               <img
                 src={images[selectedImage]}
                 alt={product.name}
-                className="w-full h-80 object-cover rounded-xl"
+                className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-xl"
               />
             </div>
-            <div className="flex space-x-2">
+            <div className="flex space-x-2 overflow-x-auto">
               {images.map((img, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
+                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 transition-colors flex-shrink-0 ${
                     selectedImage === index ? 'border-orange-500' : 'border-gray-200'
                   }`}
                 >
@@ -118,19 +125,19 @@ const ProductModal: React.FC<ProductModalProps> = ({
             </div>
 
             {/* Price */}
-            <div className="mb-6">
-              <div className="flex items-baseline space-x-3">
-                <span className="text-4xl font-bold text-gray-900">
+            <div className="mb-4 sm:mb-6">
+              <div className="flex items-baseline space-x-2 sm:space-x-3">
+                <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
                   ${product.price.toLocaleString()}
                 </span>
                 {product.originalPrice && (
-                  <span className="text-xl text-gray-500 line-through">
+                  <span className="text-lg sm:text-xl text-gray-500 line-through">
                     ${product.originalPrice.toLocaleString()}
                   </span>
                 )}
               </div>
               {product.originalPrice && (
-                <div className="text-green-600 font-semibold">
+                <div className="text-green-600 font-semibold text-sm sm:text-base">
                   Ahorras ${(product.originalPrice - product.price).toLocaleString()}
                 </div>
               )}
@@ -191,27 +198,28 @@ const ProductModal: React.FC<ProductModalProps> = ({
             <div className="space-y-3">
               <button
                 onClick={handleBuyNow}
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-4 rounded-xl font-bold transition-all transform hover:scale-105 shadow-lg"
+                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 sm:py-4 rounded-xl font-bold transition-all transform hover:scale-105 shadow-lg text-sm sm:text-base"
               >
                 Comprar Ahora
               </button>
-              <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <button
                   onClick={handleAddToCart}
-                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 py-3 rounded-xl font-semibold transition-colors flex items-center justify-center space-x-2"
+                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-900 py-2.5 sm:py-3 rounded-xl font-semibold transition-colors flex items-center justify-center space-x-2 text-sm sm:text-base"
                 >
-                  <ShoppingCart className="h-5 w-5" />
-                  <span>Agregar al Carrito</span>
+                  <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline">Agregar al Carrito</span>
+                  <span className="sm:hidden">Agregar</span>
                 </button>
                 <button
                   onClick={() => onToggleFavorite(product.id)}
-                  className={`p-3 rounded-xl transition-colors ${
+                  className={`p-2.5 sm:p-3 rounded-xl transition-colors ${
                     isFavorite
                       ? 'bg-red-500 text-white'
                       : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
                 >
-                  <Heart className={`h-5 w-5 ${isFavorite ? 'fill-current' : ''}`} />
+                  <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${isFavorite ? 'fill-current' : ''}`} />
                 </button>
               </div>
             </div>

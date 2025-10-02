@@ -69,13 +69,24 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
 
   const handleCompare = (e: React.MouseEvent) => {
     e.stopPropagation();
-    alert(`${product.name} agregado a comparación!`);
+    // Mostrar información del producto para comparación
+    alert(`Comparando producto:\n\n${product.name}\nPrecio: $${product.price.toLocaleString()}\nMarca: ${product.brand}\n\nPróximamente podrás comparar múltiples productos lado a lado.`);
+    button.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      button.style.transform = 'scale(1)';
+    }, 150);
   };
 
   const handleBuyNow = (e: React.MouseEvent) => {
     e.stopPropagation();
     onAddToCart(product);
-    alert(`¡Comprando ${product.name} ahora!`);
+    
+    // Animación de feedback visual en lugar del alert
+    const button = e.currentTarget as HTMLElement;
+    button.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      button.style.transform = 'scale(1)';
+    }, 150);
   };
 
   return (
@@ -108,7 +119,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
       </div>
 
       {/* Image Container with Advanced Effects */}
-      <div className="relative overflow-hidden h-64 bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="relative overflow-hidden h-48 sm:h-56 md:h-64 bg-gradient-to-br from-gray-50 to-gray-100">
         <img 
           src={product.image} 
           alt={product.name}
@@ -119,45 +130,47 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12 translate-x-full group-hover:translate-x-[-100%] transition-transform duration-1000" />
         
         {/* Dynamic Badges */}
-        <div className="absolute top-4 left-4 flex flex-col space-y-2">
+        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 flex flex-col space-y-1 sm:space-y-2">
           {product.isNew && (
-            <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
+            <div className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-pulse">
               <span className="flex items-center">
-                <div className="w-2 h-2 bg-white rounded-full mr-2 animate-ping" />
-                NUEVO
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full mr-1 sm:mr-2 animate-ping" />
+                <span className="hidden sm:inline">NUEVO</span>
+                <span className="sm:hidden">NEW</span>
               </span>
             </div>
           )}
           {product.isBestSeller && (
-            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center">
-              <Zap className="h-3 w-3 mr-1 animate-bounce" />
-              TOP SELLER
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center">
+              <Zap className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1 animate-bounce" />
+              <span className="hidden sm:inline">TOP SELLER</span>
+              <span className="sm:hidden">TOP</span>
             </div>
           )}
           {discountPercentage > 0 && (
-            <div className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg transform group-hover:scale-110 transition-transform">
+            <div className="bg-gradient-to-r from-red-600 to-pink-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold shadow-lg transform group-hover:scale-110 transition-transform">
               -{discountPercentage}% OFF
             </div>
           )}
         </div>
 
         {/* Interactive Action Buttons */}
-        <div className="absolute top-4 right-4 flex flex-col space-y-2">
+        <div className="absolute top-2 sm:top-4 right-2 sm:right-4 flex flex-col space-y-1 sm:space-y-2">
           <button 
             onClick={handleToggleFavorite}
-            className={`p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:scale-110 ${
+            className={`p-1.5 sm:p-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:scale-110 ${
               isLiked 
                 ? 'bg-red-500 text-white' 
                 : 'bg-white/80 text-gray-600 hover:bg-white hover:text-red-500'
             }`}
           >
-            <Heart className={`h-5 w-5 ${isLiked ? 'fill-current' : ''}`} />
+            <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${isLiked ? 'fill-current' : ''}`} />
           </button>
           <button 
             onClick={handleQuickView}
-            className="p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-gray-600 hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-110"
+            className="p-1.5 sm:p-2 bg-white/80 backdrop-blur-sm rounded-full shadow-lg text-gray-600 hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-110"
           >
-            <Eye className="h-5 w-5" />
+            <Eye className="h-4 w-4 sm:h-5 sm:w-5" />
           </button>
         </div>
 
@@ -165,24 +178,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
         <div className={`absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}>
-          <div className="flex space-x-3">
-            <button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-full font-bold transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 p-4">
+            <button 
               onClick={handleQuickView}
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 text-sm sm:text-base"
+            >
               <Eye className="h-4 w-4" />
-              <span>Vista Rápida</span>
+              <span className="hidden sm:inline">Vista Rápida</span>
+              <span className="sm:hidden">Ver</span>
             </button>
             <button 
               onClick={handleAddToCart}
-              className="bg-white text-orange-600 px-6 py-3 rounded-full font-bold hover:bg-orange-50 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center space-x-2">
+              className="bg-white text-orange-600 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold hover:bg-orange-50 transform hover:scale-105 transition-all duration-200 shadow-lg flex items-center justify-center space-x-2 text-sm sm:text-base"
+            >
               <ShoppingCart className="h-4 w-4" />
-              <span>Agregar</span>
+              <span className="hidden sm:inline">Agregar</span>
+              <span className="sm:hidden">+</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* Content Section with Advanced Typography */}
-      <div className="p-6 relative">
+      <div className="p-4 sm:p-6 relative">
         {/* Brand and Category */}
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
@@ -209,7 +227,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
         </div>
 
         {/* Product Title */}
-        <h3 className="font-bold text-gray-900 text-lg mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300 leading-tight">
+        <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-2 sm:mb-3 line-clamp-2 group-hover:text-orange-600 transition-colors duration-300 leading-tight">
           {product.name}
         </h3>
 
@@ -232,19 +250,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
         )}
 
         {/* Price Section with Animation */}
-        <div className="mb-4">
+        <div className="mb-3 sm:mb-4">
           <div className="flex items-baseline space-x-2">
-            <span className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">
+            <span className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text">
               ${product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
-              <span className="text-lg text-gray-500 line-through">
+              <span className="text-sm sm:text-base md:text-lg text-gray-500 line-through">
                 ${product.originalPrice.toLocaleString()}
               </span>
             )}
           </div>
           {discountPercentage > 0 && (
-            <div className="text-green-600 text-sm font-semibold">
+            <div className="text-green-600 text-xs sm:text-sm font-semibold">
               Ahorras ${((product.originalPrice || 0) - product.price).toLocaleString()}
             </div>
           )}
@@ -265,18 +283,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index, onAddToCart, 
         </div>
 
         {/* Action Buttons */}
-        <div className="flex space-x-2">
-          <button className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group/btn">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
+          <button 
             onClick={handleBuyNow}
-            <ShoppingCart className="h-5 w-5 group-hover/btn:animate-bounce" />
-            <span>Comprar</span>
-            <ArrowRight className="h-4 w-4 transform group-hover/btn:translate-x-1 transition-transform" />
+            className="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-2.5 sm:py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 group/btn relative overflow-hidden text-sm sm:text-base"
+          >
+            {/* Ripple effect */}
+            <div className="absolute inset-0 bg-white/20 transform scale-0 group-hover/btn:scale-100 transition-transform duration-300 rounded-xl" />
+            
+            <div className="relative flex items-center space-x-1 sm:space-x-2">
+              <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 group-hover/btn:animate-bounce" />
+              <span>Comprar</span>
+              <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 transform group-hover/btn:translate-x-1 transition-transform" />
+            </div>
           </button>
           <button 
             onClick={handleCompare}
-            className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold"
+            className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 font-semibold text-sm sm:text-base"
           >
-            Comparar
+            <span className="hidden sm:inline">Comparar</span>
+            <span className="sm:hidden">≈</span>
           </button>
         </div>
       </div>

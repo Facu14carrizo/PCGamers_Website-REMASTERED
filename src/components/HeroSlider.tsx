@@ -56,7 +56,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative h-96 md:h-[500px] overflow-hidden">
+    <div className="relative h-80 sm:h-96 md:h-[500px] overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -68,34 +68,34 @@ const HeroSlider = () => {
           <div className={`${slide.bg} h-full relative`}>
             <div className="absolute inset-0 bg-black bg-opacity-20"></div>
             <div className="container mx-auto px-4 h-full flex items-center">
-              <div className="grid md:grid-cols-2 gap-8 items-center w-full">
-                <div className="text-white z-10">
-                  <div className="flex items-center space-x-3 mb-4">
-                    {slide.icon}
-                    <span className="bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-bold">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center w-full">
+                <div className="text-white z-10 text-center md:text-left">
+                  <div className="flex items-center justify-center md:justify-start space-x-3 mb-3 md:mb-4">
+                    <div className="scale-75 md:scale-100">{slide.icon}</div>
+                    <span className="bg-white text-orange-600 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-bold">
                       {slide.discount}
                     </span>
                   </div>
-                  <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-pulse">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-2 md:mb-4 animate-pulse leading-tight">
                     {slide.title}
                   </h1>
-                  <h2 className="text-xl md:text-2xl mb-4 opacity-90">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 md:mb-4 opacity-90">
                     {slide.subtitle}
                   </h2>
-                  <p className="text-lg mb-6 opacity-80">
+                  <p className="text-sm sm:text-base md:text-lg mb-4 md:mb-6 opacity-80 hidden sm:block">
                     {slide.description}
                   </p>
-                  <div className="flex items-center space-x-4 mb-8">
-                    <span className="text-3xl font-bold">{slide.price}</span>
-                    <span className="text-lg line-through opacity-60">
+                  <div className="flex items-center justify-center md:justify-start space-x-2 md:space-x-4 mb-4 md:mb-8">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-bold">{slide.price}</span>
+                    <span className="text-sm md:text-lg line-through opacity-60">
                       ${parseInt(slide.price.replace(/[$.]/g, '')) * 1.3}
                     </span>
                   </div>
-                  <div className="flex space-x-4">
-                    <button className="bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-orange-50 transition-colors transform hover:scale-105">
+                  <div className="flex flex-col sm:flex-row gap-2 md:gap-4 items-center md:items-start">
+                    <button className="w-full sm:w-auto bg-white text-orange-600 px-6 md:px-8 py-2 md:py-3 rounded-full font-bold hover:bg-orange-50 transition-colors transform hover:scale-105 text-sm md:text-base">
                       COMPRAR AHORA
                     </button>
-                    <button className="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition-colors">
+                    <button className="w-full sm:w-auto border-2 border-white text-white px-6 md:px-8 py-2 md:py-3 rounded-full font-bold hover:bg-white hover:text-orange-600 transition-colors text-sm md:text-base">
                       VER DETALLES
                     </button>
                   </div>
@@ -116,24 +116,24 @@ const HeroSlider = () => {
       {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full transition-all"
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-1.5 sm:p-2 rounded-full transition-all"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-2 rounded-full transition-all"
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-1.5 sm:p-2 rounded-full transition-all"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-4 w-4 sm:h-6 sm:w-6" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
             }`}
           />

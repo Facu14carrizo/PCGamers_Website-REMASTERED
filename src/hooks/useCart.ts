@@ -21,20 +21,24 @@ export const useCart = () => {
   }, []);
 
   useEffect(() => {
+    console.log('🛒 Carrito actualizado:', cartItems);
     localStorage.setItem('gamertech-cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product: any) => {
+    console.log('addToCart llamado con:', product);
     setCartItems(prev => {
       const existingItem = prev.find(item => item.id === product.id);
       if (existingItem) {
-        return prev.map(item =>
+        const newItems = prev.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
+        console.log('Producto existente actualizado:', newItems);
+        return newItems;
       }
-      return [...prev, {
+      const newItems = [...prev, {
         id: product.id,
         name: product.name,
         price: product.price,
@@ -42,6 +46,8 @@ export const useCart = () => {
         quantity: 1,
         brand: product.brand
       }];
+      console.log('Nuevo producto agregado:', newItems);
+      return newItems;
     });
   };
 

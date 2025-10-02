@@ -3,6 +3,23 @@ import { Grid, List, Filter, SortAsc, Search, Sparkles, TrendingUp, Zap, Award }
 import ProductCard from './ProductCard';
 import ProductModal from './ProductModal';
 import { useCart } from '../hooks/useCart';
+
+// Importar imágenes locales
+import rtx4090 from '../assets/NVIDIA GeForce RTX 4090 Gaming X Trio 24GB GDDR6X.webp';
+import rtx4090Super from '../assets/RTX 4090 SÚPER OFERTA.webp';
+import amdRx7800xt from '../assets/AMD Radeon RX 7800 XT 16GB GDDR6.png';
+import amdRx7900xtx from '../assets/AMD Radeon RX 7900 XTX 24GB GDDR6.jpg';
+import ryzen7950x3d from '../assets/RYZEN 9 7950X3D.avif';
+import intelI7_13700k from '../assets/Intel Core i7-13700K 16-Core 13th Gen.webp';
+import intelI9_13900k from '../assets/Intel Core i9-13900K 24-Core 13th Gen.jpg';
+import msiB550 from '../assets/MSI MAG B550 Tomahawk Motherboard AM4.jpg';
+import gskillRam from '../assets/G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5-6000.webp';
+import corsairRam from '../assets/Corsair Vengeance RGB Pro 32GB (2x16GB) DDR4-3600.webp';
+import wdSSD from '../assets/Western Digital Black SN850X 2TB NVMe SSD.jpg';
+import monitorGaming from '../assets/Monitor Gaming ASUS ROG Swift PG279QM 27 240Hz 4K.avif';
+import monitor4k from '../assets/MONITOR GAMING 4K.jpg';
+import mouseLogitech from '../assets/Mouse Gaming Logitech G Pro X Superlight Wireless.jpg';
+import tecladoHyperX from '../assets/Teclado Mecánico HyperX Alloy Origins RGB.jpg';
 import { useFavorites } from '../hooks/useFavorites';
 
 const ProductCatalog = () => {
@@ -18,7 +35,7 @@ const ProductCatalog = () => {
   const [displayedProducts, setDisplayedProducts] = useState<any[]>([]);
   const [productsToShow, setProductsToShow] = useState(12);
   
-  const { addToCart } = useCart();
+  const { addToCart, getCartItemsCount } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   const products = [
@@ -28,7 +45,7 @@ const ProductCatalog = () => {
       brand: "MSI",
       price: 899999,
       originalPrice: 1199999,
-      image: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg",
+      image: rtx4090,
       rating: 4.8,
       reviews: 127,
       isNew: false,
@@ -43,7 +60,7 @@ const ProductCatalog = () => {
       brand: "AMD",
       price: 649999,
       originalPrice: 749999,
-      image: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg",
+      image: ryzen7950x3d,
       rating: 4.9,
       reviews: 89,
       isNew: true,
@@ -73,7 +90,7 @@ const ProductCatalog = () => {
       brand: "G.Skill",
       price: 189999,
       originalPrice: 229999,
-      image: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg",
+      image: gskillRam,
       rating: 4.6,
       reviews: 156,
       isNew: false,
@@ -103,7 +120,7 @@ const ProductCatalog = () => {
       brand: "ASUS",
       price: 459999,
       originalPrice: 549999,
-      image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg",
+      image: monitorGaming,
       rating: 4.9,
       reviews: 78,
       isNew: true,
@@ -133,7 +150,7 @@ const ProductCatalog = () => {
       brand: "Logitech",
       price: 89999,
       originalPrice: 109999,
-      image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg",
+      image: mouseLogitech,
       rating: 4.7,
       reviews: 245,
       isNew: false,
@@ -163,7 +180,7 @@ const ProductCatalog = () => {
       brand: "AMD",
       price: 799999,
       originalPrice: 899999,
-      image: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg",
+      image: amdRx7900xtx,
       rating: 4.6,
       reviews: 110,
       isNew: false,
@@ -178,7 +195,7 @@ const ProductCatalog = () => {
       brand: "Intel",
       price: 599999,
       originalPrice: 699999,
-      image: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg",
+      image: intelI9_13900k,
       rating: 4.8,
       reviews: 120,
       isNew: true,
@@ -223,7 +240,7 @@ const ProductCatalog = () => {
       brand: "MSI",
       price: 179999,
       originalPrice: 219999,
-      image: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg",
+      image: msiB550,
       rating: 4.6,
       reviews: 75,
       isNew: false,
@@ -238,7 +255,7 @@ const ProductCatalog = () => {
       brand: "Corsair",
       price: 99999,
       originalPrice: 129999,
-      image: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg",
+      image: corsairRam,
       rating: 4.7,
       reviews: 140,
       isNew: false,
@@ -283,7 +300,7 @@ const ProductCatalog = () => {
       brand: "WD",
       price: 139999,
       originalPrice: 179999,
-      image: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg",
+      image: wdSSD,
       rating: 4.8,
       reviews: 95,
       isNew: true,
@@ -298,7 +315,7 @@ const ProductCatalog = () => {
       brand: "LG",
       price: 249999,
       originalPrice: 299999,
-      image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg",
+      image: monitor4k,
       rating: 4.7,
       reviews: 88,
       isNew: false,
@@ -313,7 +330,7 @@ const ProductCatalog = () => {
       brand: "HyperX",
       price: 89999,
       originalPrice: 119999,
-      image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg",
+      image: tecladoHyperX,
       rating: 4.6,
       reviews: 110,
       isNew: false,
@@ -343,7 +360,7 @@ const ProductCatalog = () => {
       brand: "Sapphire",
       price: 549999,
       originalPrice: 649999,
-      image: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg",
+      image: amdRx7800xt,
       rating: 4.7,
       reviews: 92,
       isNew: false,
@@ -358,7 +375,7 @@ const ProductCatalog = () => {
       brand: "Intel",
       price: 449999,
       originalPrice: 549999,
-      image: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg",
+      image: intelI7_13700k,
       rating: 4.6,
       reviews: 105,
       isNew: false,
@@ -1566,10 +1583,12 @@ const ProductCatalog = () => {
 
   // Filtrar productos basado en categoría activa y término de búsqueda
   useEffect(() => {
+    console.log('Filtrando productos - Categoría activa:', activeCategory, 'Término de búsqueda:', searchTerm);
     let filtered = products;
     
     if (activeCategory !== 'all') {
       filtered = filtered.filter(product => product.category === activeCategory);
+      console.log('Productos filtrados por categoría:', filtered.length);
     }
     
     if (searchTerm) {
@@ -1606,14 +1625,11 @@ const ProductCatalog = () => {
     
     setFilteredProducts(filtered);
     setProductsToShow(12); // Resetear a 12 productos cuando cambian los filtros
-  }, [activeCategory, searchTerm, sortBy]);
+  }, [activeCategory, searchTerm, sortBy, products]);
+
   
   const handleLoadMore = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setProductsToShow(prev => Math.min(prev + 12, filteredProducts.length));
-      setIsLoading(false);
-    }, 800);
+    setProductsToShow(prev => prev + 12);
   };
 
   const handleQuickView = (product: any) => {
@@ -1622,28 +1638,111 @@ const ProductCatalog = () => {
   };
 
   const handleAddToCart = (product: any) => {
+    console.log('🛒 Agregando producto al carrito:', product.name);
+    console.log('📦 Producto completo:', product);
     addToCart(product);
-    // Mostrar notificación de éxito
+    console.log('✅ Producto agregado al carrito');
+    
+    // Crear notificación visual moderna
     const notification = document.createElement('div');
-    notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 transform transition-all duration-300';
-    notification.textContent = `¡${product.name} agregado al carrito!`;
+    notification.className = `
+      fixed top-4 right-4 bg-gradient-to-r from-green-500 to-emerald-600 
+      text-white px-6 py-4 rounded-2xl shadow-2xl z-50 
+      transform translate-x-full scale-95 opacity-0 transition-all duration-500 
+      border border-green-400/30 backdrop-blur-sm max-w-sm
+    `;
+    
+    notification.innerHTML = `
+      <div class="flex items-center space-x-3">
+        <div class="bg-white/20 p-2 rounded-full">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="font-bold text-sm">¡Producto agregado!</div>
+          <div class="text-xs opacity-90">${product.name}</div>
+          <div class="text-xs opacity-75 mt-1">Carrito: ${currentCount} items</div>
+        </div>
+        <button class="text-white/70 hover:text-white transition-colors" onclick="this.parentElement.parentElement.remove()">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    `;
+    
     document.body.appendChild(notification);
     
+    // Animación de entrada
     setTimeout(() => {
-      notification.style.transform = 'translateX(100%)';
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 300);
-    }, 2000);
+      notification.style.transform = 'translateX(0) scale(1)';
+      notification.style.opacity = '1';
+    }, 100);
+    
+    // Auto-remover después de 4 segundos
+    setTimeout(() => {
+      if (document.body.contains(notification)) {
+        notification.style.transform = 'translateX(100%) scale(0.95)';
+        notification.style.opacity = '0';
+        setTimeout(() => {
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
+          }
+        }, 500);
+      }
+    }, 4000);
   };
 
   const handleCategoryChange = (categoryId: string) => {
+    console.log('Cambiando categoría a:', categoryId);
     setActiveCategory(categoryId);
     setSearchTerm(''); // Limpiar búsqueda al cambiar categoría
+    
+    // Mostrar notificación visual
+    const categoryName = categories.find(c => c.id === categoryId)?.name || categoryId;
+    const notification = document.createElement('div');
+    notification.className = `
+      fixed top-20 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-orange-500 to-orange-600 
+      text-white px-4 py-2 rounded-full shadow-lg z-50 text-sm font-semibold
+    `;
+    notification.textContent = `Filtrando por: ${categoryName}`;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.remove();
+    }, 2000);
   };
 
   const handleSearchChange = (term: string) => {
     setSearchTerm(term);
+  };
+
+  // Escuchar eventos de búsqueda desde el header
+  useEffect(() => {
+    const handleSearchProducts = (event: any) => {
+      setSearchTerm(event.detail.searchTerm);
+      setActiveCategory('all'); // Mostrar todos los productos cuando se busca
+    };
+
+    const handleFilterByCategory = (event: any) => {
+      setActiveCategory(event.detail.category);
+      setSearchTerm(''); // Limpiar búsqueda al filtrar por categoría
+    };
+
+    window.addEventListener('searchProducts', handleSearchProducts);
+    window.addEventListener('filterByCategory', handleFilterByCategory);
+
+    return () => {
+      window.removeEventListener('searchProducts', handleSearchProducts);
+      window.removeEventListener('filterByCategory', handleFilterByCategory);
+    };
+  }, []);
+
+  // Manejar filtros del sidebar
+  const handleSidebarFilterChange = (filters: any) => {
+    // Aquí se implementaría la lógica de filtrado del sidebar
+    console.log('Filtros del sidebar:', filters);
   };
 
   const removeFilter = (filter: string) => {
@@ -1678,43 +1777,8 @@ const ProductCatalog = () => {
             </h1>
             <p className="text-xl text-gray-300 mb-6">Descubre el futuro del gaming con nuestra selección premium</p>
             
-            {/* Advanced Search Bar */}
-            <div className="max-w-2xl mx-auto relative">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Buscar productos gaming de última generación..."
-                  value={searchTerm}
-                  onChange={(e) => handleSearchChange(e.target.value)}
-                  className="w-full py-4 px-6 pr-16 bg-white/10 dark:bg-gray-800 backdrop-blur-sm border border-white/20 dark:border-gray-700 rounded-2xl text-white placeholder-gray-300 focus:outline-none focus:border-orange-400 focus:bg-white/20 dark:focus:bg-gray-900 transition-all duration-300"
-                />
-                <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 p-3 rounded-xl transition-all duration-300 transform hover:scale-105">
-                  <Search className="h-5 w-5 text-white" />
-                </button>
-              </div>
-            </div>
           </div>
 
-          {/* Dynamic Category Pills */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => handleCategoryChange(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  activeCategory === category.id
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg'
-                    : 'bg-white/10 dark:bg-gray-800 backdrop-blur-sm text-white hover:bg-white/20 dark:hover:bg-gray-700 border border-white/20 dark:border-gray-700'
-                }`}
-              >
-                {category.icon}
-                <span>{category.name}</span>
-                <span className="bg-white/20 dark:bg-gray-700 px-2 py-1 rounded-full text-xs">
-                  {category.count}
-                </span>
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Decorative Elements */}
@@ -1722,67 +1786,67 @@ const ProductCatalog = () => {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-orange-500/20 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
+        <div className="flex gap-4 sm:gap-8">
           {/* Main Content */}
           <div className="flex-1">
-            {/* Advanced Controls Bar */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-8 border border-gray-100 dark:border-gray-700">
-              <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-                <div className="flex items-center space-x-4">
+            {/* Simplified Controls Bar for Mobile */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-3 sm:p-6 mb-4 sm:mb-8 border border-gray-100 dark:border-gray-700">
+              <div className="flex flex-col gap-3 sm:gap-4">
+                {/* Products Count - Simplified for mobile */}
+                <div className="flex items-center justify-between">
                   <div className="text-gray-900 dark:text-white">
-                    <span className="text-2xl font-bold text-orange-600">{filteredProducts.length}</span>
-                    <span className="text-gray-600 dark:text-gray-300 ml-2">productos encontrados</span>
+                    <span className="text-lg sm:text-2xl font-bold text-orange-600">{filteredProducts.length}</span>
+                    <span className="text-sm sm:text-base text-gray-600 dark:text-gray-300 ml-2">productos</span>
                   </div>
-                </div>
-
-                <div className="flex items-center space-x-4">
-                  {/* View Mode Toggle */}
-                  <div className="flex bg-gray-100 dark:bg-gray-700 rounded-xl p-1">
+                  
+                  
+                  {/* View Mode Toggle - Moved to top right on mobile */}
+                  <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
                     <button
                       onClick={() => setViewMode('grid')}
-                      className={`p-3 rounded-lg transition-all duration-300 ${
+                      className={`p-2 rounded-md transition-all duration-300 ${
                         viewMode === 'grid'
                           ? 'bg-white dark:bg-gray-900 shadow-md text-orange-600'
                           : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                       }`}
                     >
-                      <Grid className="h-5 w-5" />
+                      <Grid className="h-4 w-4" />
                     </button>
                     <button
                       onClick={() => setViewMode('list')}
-                      className={`p-3 rounded-lg transition-all duration-300 ${
+                      className={`p-2 rounded-md transition-all duration-300 ${
                         viewMode === 'list'
                           ? 'bg-white dark:bg-gray-900 shadow-md text-orange-600'
                           : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
                       }`}
                     >
-                      <List className="h-5 w-5" />
+                      <List className="h-4 w-4" />
                     </button>
                   </div>
+                </div>
 
-                  {/* Sort Dropdown */}
-                  <div className="relative">
-                    <select
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value)}
-                      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-700 dark:text-white focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all duration-300 appearance-none cursor-pointer pr-10"
-                    >
-                      <option value="popularity">Más Popular</option>
-                      <option value="price-low">Precio: Menor a Mayor</option>
-                      <option value="price-high">Precio: Mayor a Menor</option>
-                      <option value="rating">Mejor Calificación</option>
-                      <option value="newest">Más Nuevos</option>
-                      <option value="discount">Mayor Descuento</option>
-                    </select>
-                    <SortAsc className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 pointer-events-none" />
-                  </div>
+                {/* Sort Dropdown - Full width on mobile */}
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 text-gray-700 dark:text-white focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all duration-300 appearance-none cursor-pointer pr-10 text-sm"
+                  >
+                    <option value="popularity">Más Popular</option>
+                    <option value="price-low">Precio: Menor a Mayor</option>
+                    <option value="price-high">Precio: Mayor a Menor</option>
+                    <option value="rating">Mejor Calificación</option>
+                    <option value="newest">Más Nuevos</option>
+                    <option value="discount">Mayor Descuento</option>
+                  </select>
+                  <SortAsc className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
                 </div>
               </div>
             </div>
 
-            {/* Floating Control Panel */}
-            <div className="fixed top-1/2 right-6 transform -translate-y-1/2 z-40 space-y-4">
+            {/* Floating Control Panel - Hidden on mobile */}
+            <div className="hidden lg:block fixed top-1/2 right-6 transform -translate-y-1/2 z-40 space-y-4">
               <div className="bg-white/90 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-orange-200">
                 <div className="space-y-3">
                   <button
@@ -1795,9 +1859,42 @@ const ProductCatalog = () => {
               </div>
             </div>
 
-            {/* Immersive Filter Experience */}
-            <div className="mb-12">
-              <div className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-8 shadow-2xl border border-gray-700 relative overflow-hidden">
+            {/* Category Pills - Always visible and responsive */}
+            <div className="mb-4 sm:mb-6 lg:mb-8">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      console.log('Botón de categoría clickeado:', category.id);
+                      handleCategoryChange(category.id);
+                    }}
+                    className={`flex items-center space-x-1 sm:space-x-2 px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm lg:text-base ${
+                      activeCategory === category.id
+                        ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg scale-105'
+                        : 'bg-white/10 dark:bg-gray-800 backdrop-blur-sm text-white hover:bg-white/20 dark:hover:bg-gray-700 border border-white/20 dark:border-gray-700'
+                    }`}
+                  >
+                    <div className="scale-75 sm:scale-90 lg:scale-100">{category.icon}</div>
+                    <span className="hidden sm:inline">{category.name}</span>
+                    <span className="sm:hidden text-xs font-medium">
+                      {category.name.split(' ')[0]}
+                    </span>
+                    <span className={`px-1.5 sm:px-2 py-0.5 rounded-full text-xs font-bold ${
+                      activeCategory === category.id 
+                        ? 'bg-white/30 text-white' 
+                        : 'bg-white/20 dark:bg-gray-700 text-white'
+                    }`}>
+                      {category.count}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Simplified Product Section - Hidden on mobile for better UX */}
+            <div className="mb-6 sm:mb-12">
+              <div className="hidden sm:block bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-3xl p-6 lg:p-8 shadow-2xl border border-gray-700 relative overflow-hidden">
                 {/* Animated Background */}
                 <div className="absolute inset-0 opacity-10">
                   {[...Array(20)].map((_, i) => (
@@ -1815,13 +1912,13 @@ const ProductCatalog = () => {
                 </div>
 
                 <div className="relative z-10">
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-6">
-                    <div className="text-white">
-                      <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-white to-orange-300 bg-clip-text text-transparent">
+                  <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                    <div className="text-white text-center lg:text-left">
+                      <h2 className="text-2xl lg:text-3xl font-bold mb-2 bg-gradient-to-r from-white to-orange-300 bg-clip-text text-transparent">
                         Explorar Productos
                       </h2>
-                      <div className="flex items-center space-x-4">
-                        <span className="text-4xl font-bold text-orange-400">{filteredProducts.length}</span>
+                      <div className="flex items-center justify-center lg:justify-start space-x-4">
+                        <span className="text-3xl lg:text-4xl font-bold text-orange-400">{filteredProducts.length}</span>
                         <span className="text-gray-300">productos disponibles</span>
                       </div>
                     </div>
@@ -1840,9 +1937,9 @@ const ProductCatalog = () => {
                 }} />
               </div>
 
-              <div className={`relative z-10 grid gap-8 ${
+              <div className={`relative z-10 grid gap-3 sm:gap-4 md:gap-6 lg:gap-8 ${
                 viewMode === 'grid' 
-                  ? 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3' 
+                  ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
                   : 'grid-cols-1'
               }`}>
                 {filteredProducts.slice(0, productsToShow).length > 0 ? (
@@ -1884,10 +1981,10 @@ const ProductCatalog = () => {
               </div>
             </div>
 
-            {/* Load More Section */}
-            {filteredProducts.length > 0 && productsToShow < filteredProducts.length && (
-              <div className="mt-20">
-                <div className="bg-gradient-to-r from-gray-900 via-orange-900 to-gray-900 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
+            {/* Load More Section - Always show for debugging */}
+            {filteredProducts.length > 0 && (
+              <div className="mt-8 sm:mt-12 lg:mt-20">
+                <div className="bg-gradient-to-r from-gray-900 via-orange-900 to-gray-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 text-center relative overflow-hidden shadow-2xl">
                   {/* Animated Background Elements */}
                   <div className="absolute inset-0 opacity-20">
                     {[...Array(15)].map((_, i) => (
@@ -1905,16 +2002,16 @@ const ProductCatalog = () => {
                   </div>
 
                   <div className="relative z-10">
-                    <div className="mb-8">
-                      <h3 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
+                    <div className="mb-4 sm:mb-6 lg:mb-8">
+                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 bg-gradient-to-r from-white via-orange-200 to-orange-400 bg-clip-text text-transparent">
                         Descubre Más Gaming
                       </h3>
-                      <div className="flex items-center justify-center space-x-4 text-orange-300 mb-6">
-                        <div className="h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent w-32" />
-                        <span className="text-lg font-semibold">
+                      <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-orange-300 mb-4 sm:mb-6">
+                        <div className="hidden sm:block h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent w-16 lg:w-32" />
+                        <span className="text-sm sm:text-base lg:text-lg font-semibold">
                           Mostrando {productsToShow} de {filteredProducts.length} productos
                         </span>
-                        <div className="h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent w-32" />
+                        <div className="hidden sm:block h-px bg-gradient-to-r from-transparent via-orange-400 to-transparent w-16 lg:w-32" />
                       </div>
                       
                       {/* Progress Visualization */}
@@ -1935,47 +2032,41 @@ const ProductCatalog = () => {
                       </div>
                     </div>
                     
+                    {/* Botón Principal Simplificado */}
                     <button 
                       onClick={handleLoadMore}
-                      disabled={isLoading}
-                      className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-16 py-6 rounded-2xl font-bold transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-orange-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden"
+                      className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 sm:px-12 lg:px-16 py-3 sm:py-4 lg:py-6 rounded-xl sm:rounded-2xl font-bold transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-orange-500/25 relative overflow-hidden text-sm sm:text-base lg:text-lg"
                     >
-                      {/* Button Background Animation */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                      
-                      <div className="relative flex items-center space-x-4">
-                        {isLoading ? (
-                          <>
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white" />
-                            <span className="text-xl">Cargando experiencias gaming...</span>
-                          </>
-                        ) : (
-                          <>
-                            <Sparkles className="h-6 w-6 group-hover:animate-bounce" />
-                            <span className="text-xl">Cargar Más Productos</span>
-                            <div className="bg-white/20 px-4 py-2 rounded-full text-sm font-bold">
-                              +{Math.min(12, filteredProducts.length - productsToShow)} productos
-                            </div>
-                          </>
-                        )}
+                      <div className="relative flex items-center justify-center space-x-2 sm:space-x-4">
+                        <Sparkles className="h-4 w-4 sm:h-6 sm:w-6 group-hover:animate-bounce" />
+                        <span className="text-sm sm:text-base lg:text-xl">
+                          Cargar Más 12
+                        </span>
+                        <div className="bg-white/20 px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-bold">
+                          +12
+                        </div>
                       </div>
                     </button>
 
+
                     {/* Additional Stats */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-center">
-                                                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                              <div className="text-3xl font-bold text-orange-400 mb-2">{filteredProducts.length}</div>
-                              <div className="text-white/80">Productos Encontrados</div>
-                            </div>
-                                                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                              <div className="text-3xl font-bold text-orange-400 mb-2">{productsToShow}</div>
-                              <div className="text-white/80">Productos Mostrados</div>
-                            </div>
-                            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                              <div className="text-3xl font-bold text-orange-400 mb-2">4.8★</div>
-                              <div className="text-white/80">Rating Promedio</div>
-                            </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8 lg:mt-12 text-center">
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/10">
+                              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-400 mb-1 sm:mb-2">{filteredProducts.length}</div>
+                              <div className="text-white/80 text-xs sm:text-sm">Productos Encontrados</div>
+                      </div>
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/10">
+                              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-400 mb-1 sm:mb-2">{productsToShow}</div>
+                              <div className="text-white/80 text-xs sm:text-sm">Productos Mostrados</div>
+                      </div>
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/10">
+                        <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-orange-400 mb-1 sm:mb-2">
+                          {filteredProducts.length > 0 ? Math.round((productsToShow / filteredProducts.length) * 100) : 0}%
+                        </div>
+                        <div className="text-white/80 text-xs sm:text-sm">Progreso</div>
+                      </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
