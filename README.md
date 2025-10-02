@@ -5,6 +5,11 @@
 Este proyecto es una **remasterización** completa de una versión anterior que desarrollé con el mismo nombre con el fin hacer una demostracion de skills. En esta nueva versión, he mejorado el diseño, optimizado el rendimiento y añadido funcionalidades modernas para ofrecer una plataforma de compra más atractiva y eficiente para los entusiastas del gaming.
 
 ---
+
+<div align="center">
+  <h3>🎮 GamerTech</h3>
+  <p>E-commerce Moderno sobre Gaming</p>
+
   <a href="https://gaming-techstore.netlify.app" target="_blank">
     <img src="https://img.shields.io/badge/🌐_Demo_Live-FF6B6B?style=for-the-badge" alt="Demo Live" />
   </a>
