@@ -1,19 +1,17 @@
 # GamerTech - Pro Gaming Store
 
-¡Bienvenido a **GamerTech**! Esta es una tienda web ultra moderna de hardware y periféricos gamer, desarrollada con las mejores tecnologías frontend para ofrecer una experiencia profesional, rápida y totalmente responsive.
+¡Bienvenido a **GamerTech**! Esta es una tienda web ultra moderna de hardware y periféricos gamer, desarrollada con las mejores tecnologías frontend para brindar una experiencia de usuario profesional, rápida y completamente responsive, adaptándose a cualquier dispositivo.
+
+Este proyecto es una **remasterización** completa de una versión anterior que desarrollé con el mismo nombre con el fin hacer una demostracion de skills. En esta nueva versión, he mejorado el diseño, optimizado el rendimiento y añadido funcionalidades modernas para ofrecer una plataforma de compra más atractiva y eficiente para los entusiastas del gaming.
 
 ---
+  <a href="https://gaming-techstore.netlify.app" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Demo_Live-FF6B6B?style=for-the-badge" alt="Demo Live" />
+  </a>
+</div>
+<img src="Demo-gamertech.png" alt="Demo"/>
 
-## 🚀 Tecnologías Utilizadas
 
-- **React** (Vite)
-- **TypeScript**
-- **Tailwind CSS** (con breakpoints personalizados y animaciones)
-- **LocalStorage** (persistencia de carrito y favoritos)
-- **SVG Icons** (Lucide)
-- **Imágenes locales optimizadas**
-
----
 
 ## 🎮 Características Principales
 
@@ -30,47 +28,6 @@
 
 ---
 
-## 📦 Instalación y Ejecución
-
-1. **Clona el repositorio:**
-   ```bash
-   git clone https://github.com/tuusuario/gamertech-store.git
-   cd gamertech-store
-   ```
-
-2. **Instala las dependencias:**
-   ```bash
-   npm install
-   ```
-
-3. **Inicia el servidor de desarrollo:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Abre en tu navegador:**
-   - Normalmente en [http://localhost:5173](http://localhost:5173)
-
----
-
-## 🖼️ Estructura de Carpetas
-
-```
-PCGamers_Website-REMASTERED/
-├── public/
-├── src/
-│   ├── assets/           # Imágenes locales de productos
-│   ├── components/       # Componentes React (Header, ProductCard, etc)
-│   ├── hooks/            # Custom hooks (useCart, useFavorites)
-│   ├── App.tsx           # Composición principal
-│   └── index.css         # Estilos globales y Tailwind
-├── tailwind.config.js    # Configuración de breakpoints y animaciones
-├── index.html            # Favicon y metadatos
-└── README.md
-```
-
----
-
 ## ✨ Experiencia de Usuario
 
 - **Mobile First:** Navegación y compra optimizadas para celulares y tablets.
@@ -80,18 +37,8 @@ PCGamers_Website-REMASTERED/
 
 ---
 
-## 🛠️ Personalización
-
-- **Agrega tus productos** editando el array en `ProductCatalog.tsx` y colocando imágenes en `src/assets`.
-- **Edita los breakpoints** en `tailwind.config.js` para adaptar el diseño a tus necesidades.
-- **Cambia el favicon** en `index.html` (SVG gamepad por defecto).
-
----
-
 ## 📢 Créditos y Licencia
 
-- **Desarrollado por:** [Tu Nombre o Equipo]
-- **Icons:** [Lucide](https://lucide.dev/)
-- **Framework:** [Vite](https://vitejs.dev/), [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)
+- **Desarrollado por:** [Facundo Carrizo]
 
 Este proyecto es open source. ¡Siéntete libre de mejorarlo y compartirlo!
