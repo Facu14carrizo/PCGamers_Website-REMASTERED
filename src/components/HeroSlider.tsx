@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Zap, Cpu, Monitor } from 'lucide-react';
+import rtx4090Super from '../assets/RTX 4090 SÚPER OFERTA.jpg';
+import monitor4k from '../assets/MONITOR GAMING 4K.webp';
+import ryzen7950x3d from '../assets/RYZEN 9 7950X3D.webp';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,7 +17,7 @@ const HeroSlider = () => {
       discount: "25% OFF",
       bg: "bg-gradient-to-r from-orange-600 via-orange-500 to-red-500",
       icon: <Zap className="h-12 w-12" />,
-      image: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg"
+      image: rtx4090Super
     },
     {
       id: 2,
@@ -25,7 +28,7 @@ const HeroSlider = () => {
       discount: "15% OFF",
       bg: "bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500",
       icon: <Cpu className="h-12 w-12" />,
-      image: "https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg"
+      image: ryzen7950x3d
     },
     {
       id: 3,
@@ -36,7 +39,7 @@ const HeroSlider = () => {
       discount: "30% OFF",
       bg: "bg-gradient-to-r from-orange-600 via-orange-400 to-amber-400",
       icon: <Monitor className="h-12 w-12" />,
-      image: "https://images.pexels.com/photos/777001/pexels-photo-777001.jpeg"
+      image: monitor4k
     }
   ];
 

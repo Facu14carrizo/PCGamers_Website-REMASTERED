@@ -6,10 +6,10 @@ import { useCart } from '../hooks/useCart';
 
 // Importar imágenes locales
 import rtx4090 from '../assets/NVIDIA GeForce RTX 4090 Gaming X Trio 24GB GDDR6X.webp';
-import rtx4090Super from '../assets/RTX 4090 SÚPER OFERTA.webp';
+import rtx4090Super from '../assets/RTX 4090 SÚPER OFERTA.jpg';
 import amdRx7800xt from '../assets/AMD Radeon RX 7800 XT 16GB GDDR6.png';
 import amdRx7900xtx from '../assets/AMD Radeon RX 7900 XTX 24GB GDDR6.jpg';
-import ryzen7950x3d from '../assets/RYZEN 9 7950X3D.avif';
+import ryzen7950x3d from '../assets/RYZEN 9 7950X3D.webp';
 import intelI7_13700k from '../assets/Intel Core i7-13700K 16-Core 13th Gen.webp';
 import intelI9_13900k from '../assets/Intel Core i9-13900K 24-Core 13th Gen.jpg';
 import msiB550 from '../assets/MSI MAG B550 Tomahawk Motherboard AM4.jpg';
@@ -17,7 +17,7 @@ import gskillRam from '../assets/G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5-6000.
 import corsairRam from '../assets/Corsair Vengeance RGB Pro 32GB (2x16GB) DDR4-3600.webp';
 import wdSSD from '../assets/Western Digital Black SN850X 2TB NVMe SSD.jpg';
 import monitorGaming from '../assets/Monitor Gaming ASUS ROG Swift PG279QM 27 240Hz 4K.avif';
-import monitor4k from '../assets/MONITOR GAMING 4K.jpg';
+import monitor4k from '../assets/MONITOR GAMING 4K.webp';
 import mouseLogitech from '../assets/Mouse Gaming Logitech G Pro X Superlight Wireless.jpg';
 import tecladoHyperX from '../assets/Teclado Mecánico HyperX Alloy Origins RGB.jpg';
 import { useFavorites } from '../hooks/useFavorites';
@@ -322,7 +322,7 @@ const ProductCatalog = () => {
       isBestSeller: false,
       freeShipping: true,
       category: 'peripheral',
-      specs: ['32\" QHD', '165Hz', 'HDR10', '1ms Response']
+      specs: ['32" QHD', '165Hz', 'HDR10', '1ms Response']
     },
     {
       id: 20,
@@ -1538,6 +1538,21 @@ const ProductCatalog = () => {
       freeShipping: true,
       category: 'peripheral',
       specs: ['48Gbps', '4K@120Hz', '8K@60Hz', 'VRR Support']
+    },
+    {
+      id: 999,
+      name: "RTX 4090 SÚPER OFERTA",
+      brand: "NVIDIA",
+      price: 999999,
+      originalPrice: 1299999,
+      image: rtx4090Super,
+      rating: 5.0,
+      reviews: 200,
+      isNew: true,
+      isBestSeller: true,
+      freeShipping: true,
+      category: 'gpu',
+      specs: ['24GB GDDR6X', '4K Gaming', 'Ray Tracing', 'DLSS 3.0']
     }
   ];
 
